@@ -11,19 +11,19 @@ app.get('/hello/:vardas', (req, res) => {
 })
 
 app.get('/sum/:a/:b', (req, res) => {
-    res.send(`Sum: ${parseInt(req.params.a) + parseInt(req.params.b)}`)
+    res.send(`Sum: ${parseFloat(req.params.a) + parseFloat(req.params.b)}`)
 })
 
 app.get('/diff/:a/:b', (req, res) => {
-    res.send(`Difference: ${parseInt(req.params.a) - parseInt(req.params.b)}`)
+    res.send(`Difference: ${parseFloat(req.params.a) - parseFloat(req.params.b)}`)
 })
 
 app.get('/multi/:a/:b', (req, res) => {
-    res.send(`Multi: ${parseInt(req.params.a) * parseInt(req.params.b)}`)
+    res.send(`Multiplication: ${parseFloat(req.params.a) * parseFloat(req.params.b)}`)
 })
 
 app.get('/div/:a/:b', (req, res) => {
-    res.send(`Div: ${parseInt(req.params.a) / parseInt(req.params.b)}`)
+    res.send(`Division: ${parseFloat(req.params.a) / parseFloat(req.params.b)}`)
 })
 
 app.listen(port, () => {
