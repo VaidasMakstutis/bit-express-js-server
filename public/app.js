@@ -2166,29 +2166,67 @@ __webpack_require__.r(__webpack_exports__);
 //     console.log(res);
 //     // document.querySelector('body').innerHTML = res.data
 // });
+//Calculator
+// window.addEventListener("DOMContentLoaded", () => {
+//   const alert = document.querySelector('.alert-danger');
+//   const result = document.querySelector('.alert-success');
+//   document.querySelector("button").addEventListener("click", () => {
+//     const data = {};
+//     data.d1 = document.querySelector("#d1").value || 0;
+//     data.d2 = document.querySelector("#d2").value || 0;
+//     data.action = document.querySelector("#action").value;
+//     axios.post("http://localhost:3003/calculator", data).then(res => {
+//       console.log(res);
+//       if (res.data.errMsg) {
+//           alert.style.display = 'block';
+//           result.style.display = 'none';
+//           alert.innerHTML = res.data.errMsg;
+//       }
+//       else {
+//           alert.style.display = 'none';
+//           result.style.display = 'block';
+//           result.innerHTML = res.data.answer;
+//       }
+//     })
+//   })
+// });
+//DOMINOS
 
-window.addEventListener("DOMContentLoaded", function () {
+window.addEventListener('DOMContentLoaded', function () {
+  // Geting dominos
+  var getDominos = function getDominos() {
+    axios__WEBPACK_IMPORTED_MODULE_0___default().get('http://localhost:3003/dominos').then(function (res) {
+      console.log(res.data);
+      var dominosHtml = '';
+      res.data.dominos.forEach(function (d) {
+        dominosHtml = dominosHtml + "\n              <div class=\"domino\">\n\n              <div class=\"left-side\">\n                  ".concat(d.left_side, "\n              </div>\n\n              <div class=\"right-side\">\n                  ").concat(d.right_side, "\n              </div>\n              \n              </div>\n              ");
+      });
+      document.querySelector('.dominos').innerHTML = dominosHtml;
+    });
+  };
+
   var alert = document.querySelector('.alert-danger');
-  var result = document.querySelector('.alert-success');
-  document.querySelector("button").addEventListener("click", function () {
+  var success = document.querySelector('.alert-success');
+  document.querySelector('#add-new').addEventListener('click', function () {
     var data = {};
-    data.d1 = document.querySelector("#d1").value || 0;
-    data.d2 = document.querySelector("#d2").value || 0;
-    data.action = document.querySelector("#action").value;
-    axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:3003/calculator", data).then(function (res) {
+    data.left = document.querySelector('#left').value || 0;
+    data.right = document.querySelector('#right').value || 0;
+    axios__WEBPACK_IMPORTED_MODULE_0___default().post('http://localhost:3003/dominos/add', data).then(function (res) {
       console.log(res);
 
       if (res.data.errMsg) {
         alert.style.display = 'block';
-        result.style.display = 'none';
+        success.style.display = 'none';
         alert.innerHTML = res.data.errMsg;
       } else {
         alert.style.display = 'none';
-        result.style.display = 'block';
-        result.innerHTML = res.data.answer;
+        success.style.display = 'block';
+        success.innerHTML = 'New domino has been added.';
+        getDominos();
       }
     });
   });
+  getDominos();
 });
 
 /***/ }),
