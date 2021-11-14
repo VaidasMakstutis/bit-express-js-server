@@ -1,6 +1,9 @@
 const express = require('express')
 const app = express()
 const port = 3003
+const cors = require('cors')
+
+app.use(cors())
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
@@ -27,5 +30,5 @@ app.get('/div/:a/:b', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`App is working on: http://localhost:${port}`)
+  console.log(`Your server is working on: http://localhost:${port}`)
 })
