@@ -19,6 +19,12 @@
   "homepage": "https://github.com/VaidasMakstutis/bit-express-js-server#readme",
   "dependencies": {
     "axios": "^0.24.0",
+    "bootstrap": "^4.6.0",
     "laravel-mix": "^6.0.39"
+  },
+  "devDependencies": {
+    "resolve-url-loader": "^4.0.0",
+    "sass": "^1.43.4",
+    "sass-loader": "^12.1.0"
   }
 }
